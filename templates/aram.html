@@ -5,45 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery</title>
     <style>
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .image-gallery img {
-            width: 200px;
-            height: auto;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-        }
-                
-        .container {
-    text-align: center;
-}
-
-#cardContainer, #movedContainer {
-    margin: 20px;
-}
-
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 10px;
-    cursor: pointer;
-    display: inline-block;
-    transition: background-color 0.3s;
-}
-
-.card:hover {
-    background-color: #e0e0e0;
-}
-/* General Body Styling */
+        /* General Body Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Cinzel', serif; /* Fantasy-style font */
+    background-color: #dce7f0; /* Light blue/gray background */
     margin: 0;
     padding: 0;
     display: flex;
@@ -54,12 +19,38 @@ body {
 
 /* Container Styling */
 .container {
-    background-color: #fff;
+    text-align: center;
+    background-color: #ffffff; /* White container background */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Light shadow */
     max-width: 900px;
     width: 100%;
+    color: #2a3b4c; /* Darker text for contrast */
+    font-weight: bold; /* Make all text bold */
+}
+
+/* Card Containers */
+#cardContainer, #movedContainer {
+    margin: 20px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #eef3f7; /* Light card background */
+    border: 1px solid #aad3e6; /* Light blue border */
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    color: #2a3b4c; /* Darker text for contrast */
+    font-weight: bold; /* Make card text bold */
+}
+
+.card:hover {
+    background-color: #d7e1e8; /* Slightly darker on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
 }
 
 /* Form Group Styling */
@@ -71,38 +62,75 @@ body {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #2a3b4c; /* Darker text for contrast */
 }
 
 .form-group textarea,
 .form-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #3e5a72; /* Darker border */
     border-radius: 4px;
-    box-sizing: border-box; /* Ensure padding is included in width */
-            text-align: center; /* Horizontal alignment */
-    vertical-align: middle; /* Vertical alignment */
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #eef3f7; /* Lighter input background */
+    color: #2a3b4c; /* Darker text for contrast */
 }
 
 .form-group textarea {
-    resize: vertical; /* Allow vertical resizing only */
+    resize: vertical;
 }
 
-/* Submit Button Styling */
+/* Fancy "开始匹配" Button Styling */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
 .submit-btn {
-    background-color: #4CAF50;
-    color: white;
+    background: linear-gradient(145deg, #aad3e6, #cde2f2); /* Lighter gradient */
+    color: #2a3b4c; /* Darker text */
     border: none;
-    padding: 15px 20px;
-    font-size: 16px;
-    margin: 10px 0;
+    padding: 25px 40px;
+    font-size: 30px;
+    margin: 20px 0;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    border-radius: 12px;
+    transition: background 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Moderate shadow */
+    position: relative;
+    overflow: hidden;
+        font-family: 'Cinzel', serif; /* Fancy font */
+
+    font-weight: bold; /* Make button text bold */
 }
 
 .submit-btn:hover {
-    background-color: #45a049;
+    background: linear-gradient(145deg, #cde2f2, #aad3e6); /* Reverse gradient on hover */
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.submit-btn:active {
+    background: linear-gradient(145deg, #aad3e6, #cde2f2); /* Revert to original gradient on active */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+    transform: scale(1);
+}
+
+/* Fancy "开始匹配" Button with Special Effects */
+.submit-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+    left: 125%;
 }
 
 /* Team Info Section */
@@ -117,13 +145,15 @@ body {
 .team-section h1 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333;
+    color: #2a3b4c; /* Darker text */
+    font-weight: bold; /* Make text bold */
 }
 
 .team-section h2 {
     font-size: 20px;
     margin-bottom: 15px;
-    color: #555;
+    color: #3e5a72; /* Darker blue text */
+    font-weight: bold; /* Make text bold */
 }
 
 /* Champion Images Styling */
@@ -133,24 +163,30 @@ body {
     gap: 10px;
     justify-content: center;
 }
+/* CSS for making the label bigger and bold */
+.large-bold-label {
+    font-size: 28px; /* Adjust size as needed */
+    font-weight: bold;
+    color: #2a3b4c; /* Ensure it's readable */
+}
 
 .champion-images img {
-    width: 60px; /* Adjust size as needed */
-    height: 60px; /* Maintain aspect ratio */
+    width: 60px;
+    height: 60px;
     border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 1px solid #aad3e6; /* Light blue border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .champion-images img:hover {
     transform: scale(1.4);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Refresh Button Styling */
 .refresh-btn {
-    background-color: #007BFF;
-    color: white;
+    background-color: #aad3e6; /* Light blue button */
+    color: #2a3b4c; /* Darker text */
     border: none;
     padding: 10px 15px;
     font-size: 16px;
@@ -158,39 +194,42 @@ body {
     border-radius: 4px;
     transition: background-color 0.3s ease;
     margin-top: 20px;
+    font-weight: bold; /* Make button text bold */
 }
 
 .refresh-btn:hover {
-    background-color: #0056b3;
-}
-/* Input for Champion Size Styling */
-.champ-size-input {
-    width: 10px; /* Adjust width as needed */
-    padding: 8px;
-    font-size: 14px; /* Smaller font size */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-        text-align: center; /* Horizontal alignment */
-    vertical-align: middle; /* Vertical alignment */
-}
-#cardContainer .card {
-    /* Style for cards in the original container */
+    background-color: #cde2f2; /* Lighter blue on hover */
 }
 
-#movedContainer .card {
-    /* Style for cards in the moved container */
+/* Input for Champion Size Styling */
+.champ-size-input {
+    width: 50px; /* Adjust width as needed */
+    padding: 8px;
+    font-size: 14px;
+    border: 4px solid #3e5a72; /* Darker border */
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #eef3f7; /* Lighter input background */
+    color: #2a3b4c; /* Darker text */
+    font-weight: bold; /* Make input text bold */
 }
-        
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
+
+/* List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #aad3e6; /* Light blue border */
+    color: #2a3b4c; /* Darker text */
+    font-weight: bold; /* Make list text bold */
+}
+
+
     </style>
   <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -222,11 +261,12 @@ body {
         <form method="post" action="{% url 'aram_generator' %}" id="matchForm">
             {% csrf_token %}
             <div class="form-group">
-                <label for="players">Current Players:</label>
-                <textarea id="players" name="players" spellcheck="false" rows="10" cols="50" placeholder="Enter players here...">{{ players }}</textarea>
+<label for="players" class="large-bold-label">Current Players:</label>
+                
+                <textarea id="players" name="players" spellcheck="false" rows="10" cols="10" placeholder="Enter players here...">{{ players }}</textarea>
             </div>
             <div class="form-group">
-                <label for="champ_number">Champion Size:</label>
+                <label for="champ_number" class="large-bold-label">Champion Size:</label>
                 <input type="text" id="champ_number" name="champ_number" placeholder="Enter champion size"  size="5" value="{{ champ_number   }}" class="champ-size-input">
             </div>
             <button type="submit" class="submit-btn">开始匹配</button>
