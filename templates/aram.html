@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .image-gallery img {
+            width: 200px;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+                
+        .container {
+    text-align: center;
+}
+
+#cardContainer, #movedContainer {
+    margin: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.card:hover {
+    background-color: #e0e0e0;
+}
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group textarea,
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+            text-align: center; /* Horizontal alignment */
+    vertical-align: middle; /* Vertical alignment */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Submit Button Styling */
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Team Info Section */
+.team-info {
+    margin-top: 30px;
+}
+
+.team-section {
+    margin-bottom: 30px;
+}
+
+.team-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.team-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Champion Images Styling */
+.champion-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.champion-images img {
+    width: 60px; /* Adjust size as needed */
+    height: 60px; /* Maintain aspect ratio */
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.champion-images img:hover {
+    transform: scale(1.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Refresh Button Styling */
+.refresh-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.refresh-btn:hover {
+    background-color: #0056b3;
+}
+/* Input for Champion Size Styling */
+.champ-size-input {
+    width: 10px; /* Adjust width as needed */
+    padding: 8px;
+    font-size: 14px; /* Smaller font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+        text-align: center; /* Horizontal alignment */
+    vertical-align: middle; /* Vertical alignment */
+}
+#cardContainer .card {
+    /* Style for cards in the original container */
+}
+
+#movedContainer .card {
+    /* Style for cards in the moved container */
+}
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+  <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.getElementById('players');
+            form.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                                        if (document.activeElement.tagName === 'TEXTAREA') {
+                        return;
+                    }
+                    e.preventDefault(); // Prevent the form from submitting
+                }
+            });
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent default form submission behavior
+
+                // Collect form data if needed
+                const formData = new FormData(form);
+                // Here you can handle the form data, send it via AJAX, etc.
+
+                // Display a message or take another action to indicate submission success
+                alert('Form submitted successfully without clearing fields!');
+            });
+        });
+    </script>
+
+</head>
+<body>
+ <div class="container">
+        <form method="post" action="{% url 'aram_generator' %}" id="matchForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="players">Current Players:</label>
+                <textarea id="players" name="players" spellcheck="false" rows="10" cols="50" placeholder="Enter players here...">{{ players }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="champ_number">Champion Size:</label>
+                <input type="text" id="champ_number" name="champ_number" placeholder="Enter champion size"  size="5" value="{{ champ_number   }}" class="champ-size-input">
+            </div>
+            <button type="submit" class="submit-btn">开始匹配</button>
+        </form>
+        <div class="team-info">
+            <div class="team-section">
+                <h1>Team 1: {{ team1 }}</h1>
+                <h2>Team 1 Champions:</h2>
+                <div class="champion-images">
+                    {% for champ in team1_champions %}
+                        <img src="https://ddragon.leagueoflegends.com/cdn/14.15.1/img/champion/{{ champ }}.png" alt="{{ champ }}">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="team-section">
+                <h1>Team 2: {{ team2 }}</h1>
+                <h2>Team 2 Champions:</h2>
+                <div class="champion-images">
+                    {% for champ in team2_champions %}
+                        <img src="https://ddragon.leagueoflegends.com/cdn/14.15.1/img/champion/{{ champ }}.png" alt="{{ champ }}">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <button class="refresh-btn" onclick="refreshPage()">这个button暂时用不了</button>
+                 <h2>当前版本： {{ current_version }}</h2>
+
+    </div>
+{#     <div class="container">#}
+{#        <div id="cardContainer">#}
+{#            <div class="card" onclick="moveCard(this, 'movedContainer')">Card 1</div>#}
+{#            <div class="card" onclick="moveCard(this, 'movedContainer')">Card 2</div>#}
+{#            <div class="card" onclick="moveCard(this, 'movedContainer')">Card 3</div>#}
+{#        </div>#}
+{#        #}
+{#        <div id="movedContainer">#}
+{#            <h2>Moved Cards</h2>#}
+{#        </div>#}
+{#    </div>#}
+{#    <script src="{% static 'script.js' %}"></script>#}
+ 
+</body>
+</html>

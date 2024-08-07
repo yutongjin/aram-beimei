@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<style>
+    /* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 48px; /* Larger font size */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Button Link Styling */
+.button-link {
+    text-decoration: none; /* Remove underline from link */
+}
+
+/* Fancy Button Styling */
+.fancy-button {
+    background: linear-gradient(45deg, #ff6b6b, #ff9f43); /* Gradient background */
+    color: white; /* White text color */
+    border: none;
+    padding: 20px 40px; /* Larger padding for bigger button */
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1.5px; /* Spacing between letters */
+    cursor: pointer;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Larger shadow */
+    transition: all 0.4s ease; /* Smooth transition */
+    position: relative; /* For pseudo-element positioning */
+    overflow: hidden; /* Hide overflow for fancy effects */
+    outline: none; /* Remove default outline */
+    text-align: center; /* Center text */
+}
+
+/* Fancy Button Hover and Active States */
+.fancy-button:hover {
+    background: linear-gradient(45deg, #ff9f43, #ff6b6b); /* Reversed gradient on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+    transform: scale(1.05); /* Slightly increase size */
+}
+
+/* Button Ripple Effect */
+.fancy-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s, opacity 0.6s;
+    opacity: 0;
+}
+
+.fancy-button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Text Shadow Styling */
+.fancy-button {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+}
+
+
+</style>
+<head>
+    <title>homepage</title>
+</head>
+<body>
+{#    <a href="{% url 'generate_speech' %}">#}
+{#        <button>Go to Generate Speech</button>#}
+{#    </a>#}
+<body>
+    <div class="container">
+        <a href="{% url 'aram_generator' %}" class="button-link">
+            <button class="fancy-button">乱斗随机</button>
+        </a>
+    </div>
+</body>
+</body>
+</html>

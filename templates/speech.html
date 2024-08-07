@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Speech</title>
+</head>
+<body>
+    <h1>Generate Speech</h1>
+    <form method="POST">
+         {% csrf_token %}
+        <input type="text" name="user_input" placeholder="Enter your text">
+        <button type="submit">Generate</button>
+    </form>
+    {% if completion %}
+        <div id="response">
+            <h2>Response:</h2>
+            <p>{{ completion }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
