@@ -1,13 +1,14 @@
 ﻿# aram-beimei
-run in local
+Run local server 
 > python manage.py runserver
->
-after change 
+
+
+After model change 
 > python manage.py makemigrations
->  > python manage.py migrate
->  
+> python manage.py migrate
 
-push local dependency into prod 
- pip freeze > requirements.txt       
+Push local dependency into remote docker to update server dependency 
+> pip freeze > requirements.txt       
 
- deploy :  fly deploy      
+ deploy :  
+> fly deploy   
