@@ -26,5 +26,4 @@ urlpatterns = [
     path("", views.homepage, name="homepage"),
     path("generate/", views.generate_speech, name="generate_speech"),
     path("aram/", views.aram_generator, name="aram_generator"),
-    path("add_item/", views.add_item, name="add_item"),
 ]
